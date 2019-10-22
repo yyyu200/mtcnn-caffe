@@ -4,7 +4,7 @@ import cv2
 import caffe
 import numpy as np
 import random
-import cPickle as pickle
+import pickle
 imdb_exit = True
 
 def view_bar(num, total):
@@ -57,11 +57,11 @@ class BatchLoader(object):
 	self.pts_list = []
 	print "Start Reading Classify Data into Memory..."
 	if imdb_exit:
-	    fid = open('12/cls.imdb','r')
+	    fid = open('12/cls.imdb','rb')
 	    self.cls_list = pickle.load(fid)
 	    fid.close()
 	else:
-	    fid = open(cls_list,'r')
+	    fid = (cls_list,'r')
             lines = fid.readlines()
 	    fid.close()
 	    cur_=0
@@ -87,7 +87,7 @@ class BatchLoader(object):
 
 	print "Start Reading Regression Data into Memory..."
 	if imdb_exit:
-	    fid = open('12/roi.imdb','r')
+	    fid = open('12/roi.imdb','rb')
 	    self.roi_list = pickle.load(fid)
 	    fid.close()
 	else:
@@ -117,7 +117,7 @@ class BatchLoader(object):
 
 	print "Start Reading pts-regression Data into Memory..."
 	if imdb_exit:
-	    fid = open('12/pts.imdb','r')
+	    fid = open('12/pts.imdb','rb')
 	    self.pts_list = pickle.load(fid)
 	    fid.close()
 	else:
